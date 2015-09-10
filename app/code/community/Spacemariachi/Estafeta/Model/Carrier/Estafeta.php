@@ -34,17 +34,33 @@ class Spacemariachi_Estafeta_Model_Model_Carrier_Estafeta extends Mage_Shipping_
             $method->setMethod($this->_code.$rate->DescripcionServicio);
             $method->setCarrierTitle($this->getConfigData('title'));
             $method->setMethodTitle($rate->DescripcionServicio);
-            $method->setPrice($rate->CostoTotal);
-            $method->setCost($rate->TarifaBase);
+            $method->setPrice($this->_getRatePrice($rate));
             $result->append($method);
         }
         return $result;
     }
 
+    /**
+     * @param $rate
+     * @return float
+     * Estafeta returns MXN with no option for other currencies, convert if necessary
+     */
+
+    private function _getRatePrice($rate) {
+        $amount = $rate->CostoTotal;
+        $currentCurrencyCode = Mage::app()->getStore()->getCurrentCurrencyCode();
+        if ('MXN' != $currentCurrencyCode) {
+            $allowedCurrencies = Mage::getModel('directory/currency')->getConfigAllowCurrencies();
+            $rates = Mage::getModel('directory/currency')->getCurrencyRates($currentCurrencyCode, array_values($allowedCurrencies));
+            $amount = $amount/$rates['MXN'];
+        }
+        return round($amount, 2);
+    }
+
 
     private function _ejecutarFrecuencia() {
         $options = array(
-            'trace' => 1
+            'trace' => $this->getConfigData('debug')
         );
         $cliente = new SoapClient($this->_getUrl(), $options);
         $result = $cliente->FrecuenciaCotizador($this->_getRequestArray());
