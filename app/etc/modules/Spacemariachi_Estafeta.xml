@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Spacemariachi_Estafeta>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Shipping/>
+
+            </depends>
+        </Spacemariachi_Estafeta>
+    </modules>
+</config>
