@@ -6,7 +6,7 @@
  * Time: 17:51
  */
 
-class Spacemariachi_Estafeta_Model_Model_Carrier_Estafeta extends Mage_Shipping_Model_Carrier_Abstract
+class Spacemariachi_Estafeta_Model_Carrier_Estafeta extends Mage_Shipping_Model_Carrier_Abstract
     implements Mage_Shipping_Model_Carrier_Interface {
     public  $_code = 'estafeta';
     public $url;

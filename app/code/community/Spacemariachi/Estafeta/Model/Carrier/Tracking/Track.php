@@ -6,7 +6,7 @@
  * Time: 12:34 PM
  */
 
-class Spacemariachi_Estafeta_Model_Model_Carrier_Tracking_Track extends Varien_Object
+class Spacemariachi_Estafeta_Model_Carrier_Tracking_Track extends Varien_Object
 {
     public  $_code = 'estafeta';
     public $trackTestUrl = 'https://trackingqa.estafeta.com/Service.asmx?wsdl';
