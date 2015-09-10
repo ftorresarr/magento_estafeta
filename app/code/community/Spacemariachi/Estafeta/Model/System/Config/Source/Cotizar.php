@@ -6,7 +6,7 @@
  * Time: 02:35 PM
  */
 
-class spacemariachi_estafeta_Model_System_Config_Source_Cotizar
+class Spacemariachi_Estafeta_Model_System_Config_Source_Cotizar
 {
     /**
      * Options getter
